@@ -2,32 +2,34 @@
 #include <cstring>
 using namespace std;
 
-int main() {
- char str[100];
- cout << "Ingresa una cadena de texto: ";
- cin.getline(str, 100);
+int main()
+{
+ char cadena[100];
+ char *ptr = cadena;
 
- // Convertir a minúsculas
- char strMinus[100];
- int i = 0;
- while (str[i]) {
- strMinus[i] = tolower(str[i]);
- i++;
+ // Lectura de la cadena de texto
+ cout << "Introduce una cadena de texto: ";
+ cin.getline(cadena, 100);
+
+ // Conversión a minúsculas
+ for (int i = 0; cadena[i] != '\0'; i++) {
+ if (cadena[i] >= 'A' && cadena[i] <= 'Z') {
+ *(ptr + i) = cadena[i] + 32;
  }
- strMinus[i] = '\0';
-
- // Convertir a mayúsculas
- char strMayus[100];
- i = 0;
- while (str[i]) {
- strMayus[i] = toupper(str[i]);
- i++;
  }
- strMayus[i] = '\0';
 
- // Imprimir resultados
- cout << "Cadena en minúsculas: " << strMinus << endl;
- cout << "Cadena en mayúsculas: " << strMayus << endl;
+ // Impresión de la cadena en minúsculas
+ cout << "La cadena en minúsculas es: " << cadena << endl;
+
+ // Conversión a mayúsculas
+ for (int i = 0; cadena[i] != '\0'; i++) {
+ if (cadena[i] >= 'a' && cadena[i] <= 'z') {
+ *(ptr + i) = cadena[i] - 32;
+ }
+ }
+
+ // Impresión de la cadena en mayúsculas
+ cout << "La cadena en mayúsculas es: " << cadena << endl;
 
  return 0;
 }
