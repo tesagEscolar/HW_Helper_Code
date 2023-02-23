@@ -1,45 +1,28 @@
 #include <iostream>
-#include <cstring>
-using namespace std; char str[100]; cout << "Introduce una cadena de texto: ";
-cin.getline(str, 100);
+#include <algorithm>
+#include <string>
 
-char *ptr = str;
-while (*ptr)
-{
- *ptr = tolower(*ptr);
- ptr++;
-} cout << "La cadena en minúsculas es: " << str << endl; ptr = str;
-while (*ptr)
-{
- *ptr = toupper(*ptr);
- ptr++;
-} cout << "La cadena en mayúsculas es: " << str << endl; #include <iostream>
-#include <cstring>
 using namespace std;
 
 int main()
 {
- char str[100];
- cout << "Introduce una cadena de texto: ";
- cin.getline(str, 100);
+ string input_str, upper_str, lower_str;
 
- char *ptr = str;
- while (*ptr)
- {
- *ptr = tolower(*ptr);
- ptr++;
- }
+ // Leer la cadena de texto ingresada por el usuario
+ cout << "Ingrese una cadena de texto: ";
+ getline(cin, input_str);
 
- cout << "La cadena en minúsculas es: " << str << endl;
+ // Convertir la cadena a mayúsculas
+ upper_str = input_str;
+ transform(upper_str.begin(), upper_str.end(), upper_str.begin(), ::toupper);
 
- ptr = str;
- while (*ptr)
- {
- *ptr = toupper(*ptr);
- ptr++;
- }
+ // Convertir la cadena a minúsculas
+ lower_str = input_str;
+ transform(lower_str.begin(), lower_str.end(), lower_str.begin(), ::tolower);
 
- cout << "La cadena en mayúsculas es: " << str << endl;
+ // Imprimir ambos resultados en pantalla
+ cout << "La cadena en mayusculas es: " << upper_str << endl;
+ cout << "La cadena en minusculas es: " << lower_str << endl;
 
  return 0;
 }
